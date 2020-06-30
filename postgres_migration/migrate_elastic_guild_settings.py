@@ -14,6 +14,7 @@ async def main(config):
                         "INSERT INTO guild_settings VALUES (%(guild_id)s, %(prefix)s, %(announcement_channel)s, %(boost_channel)s, %(boost_role)s, %(audit_channel)s, %(enable_stickers)s, %(enable_nitro)s, %(enable_replies)s, %(enable_masked_links)s, %(is_alias_server)s) ON CONFLICT DO NOTHING",
                         parameters={
                             "guild_id": model["_id"],
+                            "prefix": model.get("prefix", "!"),
                             "announcement_channel": model.get("announcement_channel", None),
                             "boost_channel": model.get("boost_channel", None),
                             "boost_role": model.get("boost_role", None),
