@@ -9,7 +9,7 @@ setup(
     packages=find_packages(),
     entry_points={
         "dbmigrator": [
-            "migrations_directory = main:migrations_directory",
+            "migrations_directory = postgres_migration:migrations_directory",
         ],
     },
 )

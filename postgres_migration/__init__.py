@@ -1,0 +1,1 @@
+from .main import migrations_directory
