@@ -3,7 +3,8 @@
 def up(cursor):
     cursor.execute(
         """
-        create table guild_settings (
+        create table guild_settings
+        (
             guild_id             bigint                                 not null
                 constraint guild_settings_pk
                     primary key,
@@ -16,7 +17,8 @@ def up(cursor):
             enable_nitro         boolean default true,
             enable_replies       boolean default true,
             enable_masked_links  boolean default true,
-            is_alias_server      boolean default false
+            is_alias_server      boolean default false,
+            "locale"             char(2) default 'en'
         );
         """
     )
