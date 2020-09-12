@@ -14,6 +14,7 @@ def up(cursor):
         """
     )
     cursor.execute("create index webhooks__index_guild_channel on webhooks (guild_id, channel_id);")
+    cursor.execute("create index webhooks_channel_id_index on webhooks (channel_id);")
 
 
 def down(cursor):
