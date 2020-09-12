@@ -7,6 +7,7 @@ def up(cursor):
         is_public boolean not null
     );
     """)
+    cursor.execute("create index packs_pack_name_index on packs (pack_name);")
     cursor.execute("create unique index packs_guild_id_uindex on packs (guild_id);")
     cursor.execute("alter table packs add constraint packs_pk primary key (guild_id);")
 
