@@ -11,6 +11,7 @@ def up(cursor):
     cursor.execute("create index guild_features_feature_index on guild_features (feature)")
     cursor.execute("create index guild_features_guild_id_index on guild_features (guild_id)")
     cursor.execute("alter table guild_settings rename column announcement_channel to nitro_role")
+    cursor.execute("alter table guild_settings add enable_pings boolean default true")
 
     cursor.execute("CREATE TYPE premium_last_charge_status_enum AS ENUM ('Paid', 'Declined', 'Deleted', 'Pending', 'Refunded', 'Fraud', 'Other')")
     cursor.execute("""
@@ -20,7 +21,9 @@ def up(cursor):
             discord_id bigint,
             lifetime_support_cents int,
             last_charge_date date not null,
-            last_charge_status premium_last_charge_status_enum not null
+            last_charge_status premium_last_charge_status_enum not null,
+            tokens int,
+            tokens_spent int
         );
     """)
 
@@ -29,5 +32,6 @@ def down(cursor):
     cursor.execute("DROP TYPE guild_features_enum CASCADE")
     cursor.execute("DROP TABLE guild_features")
     cursor.execute("alter table guild_settings rename column nitro_role to announcement_channel")
+    cursor.execute("alter table guild_settings drop column enable_pings")
     cursor.execute("DROP TYPE premium_last_charge_status_enum CASCADE")
     cursor.execute("DROP TABLE premium_users")
