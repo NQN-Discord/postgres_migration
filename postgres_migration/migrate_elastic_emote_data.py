@@ -19,17 +19,7 @@ async def main(config):
                     emote_id = model["_id"]
                     src = model["_source"]
                     is_animated = src["is_animated"]
-                    shas = src["shas"]
                     ids = src["ids"]
-                    names = src["names"]
-
-                    is_nsfw = src.get("filtered", False)
-                    always_filter = False
-                    times_used = src.get("times_used", 0)
-
-                    external_id = src["external_id"]
-                    external_service = src["external_service"]
-                    external_url = src["external_url"]
 
                     if not ids:
                         continue
