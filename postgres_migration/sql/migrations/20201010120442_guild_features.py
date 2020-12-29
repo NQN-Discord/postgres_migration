@@ -12,6 +12,7 @@ def up(cursor):
     cursor.execute("create index guild_features_guild_id_index on guild_features (guild_id)")
     cursor.execute("alter table guild_settings rename column announcement_channel to nitro_role")
     cursor.execute("alter table guild_settings add enable_pings boolean default true")
+    cursor.execute("alter table guild_settings add max_guildwide_emotes int default 10")
 
     cursor.execute("CREATE TYPE premium_last_charge_status_enum AS ENUM ('Paid', 'Declined', 'Deleted', 'Pending', 'Refunded', 'Fraud', 'Other')")
     cursor.execute("""
