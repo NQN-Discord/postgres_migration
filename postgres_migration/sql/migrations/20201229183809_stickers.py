@@ -8,6 +8,7 @@ def up(cursor):
             prefix varchar not null,
             suffix varchar not null,
             owner_id bigint not null,
+            url varchar not null,
             constraint stickers_pk
                 primary key (suffix, prefix)
         );
